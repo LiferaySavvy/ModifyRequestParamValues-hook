@@ -16,11 +16,6 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 
-/**
- * @author Mika Koivisto, Suraj Bihari, Ivan Akimov (Hashids.java)
- * 
- *         Uses lib: https://github.com/peet/hashids.java/blob/master/README.md
- */
 public class ChangeRequestParamFilter implements Filter {
 	
 	@Override
