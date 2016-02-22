@@ -45,7 +45,7 @@ public class ChangeRequestParamFilter implements Filter {
 			String[] redirectParamArray = new String[1];
 			redirectParamArray[0] = "http://localhost:8080/web/guest/custom-portlet-workflow";
 			modifyAddParamValueMap.put("redirect", redirectParamArray);
-			modifyAddParamValueMap.put("newParam",new String[]{"neHello I am New Param value"});
+			modifyAddParamValueMap.put("newParam",new String[]{"Hello I am New Param value"});
 			HttpServletRequest wrappedRequest = new AddModifyRequestParamValueWrappedRequest(
 					httpServletRequest, modifyAddParamValueMap);
 			filterChain.doFilter(wrappedRequest, servletResponse);
