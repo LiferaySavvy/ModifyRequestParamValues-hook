@@ -10,6 +10,7 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import com.liferay.portal.kernel.log.Log;
@@ -25,15 +26,11 @@ public class CustomLoginStrutsPortletAction extends BaseStrutsPortletAction {
 	public void processAction(StrutsPortletAction originalStrutsPortletAction,
 			PortletConfig portletConfig, ActionRequest actionRequest,
 			ActionResponse actionResponse) throws Exception {
-		String modifiedRedirectValue = ParamUtil.getString(actionRequest,"redirect");
-		String newParamValue = ParamUtil.getString(actionRequest,"newParam");
+		ServletRequest servletRequest = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(actionRequest));
+		String modifiedRedirectValue = servletRequest.getParameter("redirect");
+		String newParamValue = servletRequest.getParameter("newParam");
 		logger.info("Modified Redirect Value:"+modifiedRedirectValue);
 		logger.info("Nee Parameter Value:"+newParamValue);
-		HttpServletRequest httpServletRequest = PortalUtil.getHttpServletRequest(actionRequest);
-		modifiedRedirectValue = ParamUtil.getString(httpServletRequest,"redirect");
-		newParamValue = ParamUtil.getString(httpServletRequest,"newParam");
-		logger.info("httpServletRequest Modified Redirect Value:"+modifiedRedirectValue);
-		logger.info("httpServletRequest Nee Parameter Value:"+newParamValue);
 		originalStrutsPortletAction.processAction(portletConfig, actionRequest,
 				actionResponse);
 	}
@@ -55,6 +52,7 @@ public class CustomLoginStrutsPortletAction extends BaseStrutsPortletAction {
 				resourceRequest, resourceResponse);
 	}
 
+	
 	private static Log logger = LogFactoryUtil
 			.getLog(CustomLoginStrutsPortletAction.class);
 }

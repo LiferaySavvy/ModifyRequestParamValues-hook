@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.liferaysavvy.requestwrapper;
 
 import java.util.Collections;
@@ -35,11 +33,14 @@ public class AddModifyRequestParamValueWrappedRequest extends HttpServletRequest
     @Override
     public String getParameter(final String name)
     {
+    	
         String[] strings = getParameterMap().get(name);
         if (strings != null)
         {
             return strings[0];
+            
         }
+        
         return super.getParameter(name);
     }
 
