@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hook PUBLIC "-//Liferay//DTD Hook 6.2.0//EN" "http://www.liferay.com/dtd/liferay-hook_6_2_0.dtd">
+
+<hook>
+
+	<servlet-filter>
+		<servlet-filter-name>ChangeRequestParamFilter</servlet-filter-name>
+		<servlet-filter-impl>com.liferaysavvy.requestwrapper.ChangeRequestParamFilter</servlet-filter-impl>
+		<init-param>
+			<param-name>hello</param-name>
+			<param-value>world</param-value>
+		</init-param>
+	</servlet-filter>
+	<servlet-filter-mapping>
+		<servlet-filter-name>ChangeRequestParamFilter</servlet-filter-name>
+		<url-pattern>/web/guest/home/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</servlet-filter-mapping>
+	<struts-action>
+		<struts-action-path>/login/login</struts-action-path>
+		<struts-action-impl>com.liferaysavvy.requestwrapper.CustomLoginStrutsPortletAction</struts-action-impl>
+	</struts-action>
+
+</hook>
