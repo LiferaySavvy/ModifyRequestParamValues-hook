@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.liferaysavvy.requestwrapper;
 
 import javax.portlet.ActionRequest;
@@ -30,7 +27,7 @@ public class CustomLoginStrutsPortletAction extends BaseStrutsPortletAction {
 		String modifiedRedirectValue = servletRequest.getParameter("redirect");
 		String newParamValue = servletRequest.getParameter("newParam");
 		logger.info("Modified Redirect Value:"+modifiedRedirectValue);
-		logger.info("Nee Parameter Value:"+newParamValue);
+		logger.info("New Parameter Value:"+newParamValue);
 		originalStrutsPortletAction.processAction(portletConfig, actionRequest,
 				actionResponse);
 	}
